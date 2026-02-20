@@ -425,24 +425,12 @@ function renderResetPassword(oobCode) {
 
 
 // ============================================================
-// CERRAR SESION con pantalla de despedida
+// CERRAR SESION
 // ============================================================
-async function handleLogout(username) {
-  // Bloquear onAuthStateChanged para que no interrumpa la animacion
-  window._zenitLoggingOut = true;
-
+async function handleLogout() {
   try {
     await auth.signOut();
   } catch {
-    // Si falla, limpiar la bandera y navegar al login de todas formas
-    window._zenitLoggingOut = false;
     router.navigate('login');
-    return;
   }
-
-  // Mostrar animacion de despedida y al terminar navegar al login
-  showGoodbyeScreen(username, () => {
-    window._zenitLoggingOut = false;
-    router.navigate('login');
-  });
 }
