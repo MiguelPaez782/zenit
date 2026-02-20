@@ -7,6 +7,11 @@
 
 (function initApp() {
 
+  // Bandera para bloquear onAuthStateChanged durante el cierre de sesion.
+  // Evita que el observador interrumpa la animacion de despedida
+  // redirigiendo al login antes de que esta termine.
+  window._zenitLoggingOut = false;
+
   // Verificar si la URL corresponde a una accion de Firebase (ej: reset de contrasena)
   const urlAction = router.checkUrlParams();
   if (urlAction) {
@@ -20,6 +25,10 @@
   // Observador de estado de autenticacion de Firebase
   // Se dispara automaticamente al cargar y al cambiar el estado del usuario
   auth.onAuthStateChanged(async (user) => {
+    // Si se esta ejecutando el flujo de cierre de sesion, ignorar este evento.
+    // El callback de showGoodbyeScreen se encarga de navegar al login.
+    if (window._zenitLoggingOut) return;
+
     if (user) {
       // Usuario autenticado: cargar sus datos desde Firestore
       try {
