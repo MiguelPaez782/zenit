@@ -344,7 +344,7 @@ function renderApp(user, userData) {
     username: displayName,
     onSettings: () => renderSettings(user, userData),
     onHelp:     () => renderHelp(),
-    onLogout:   () => handleLogout(displayName),
+    onLogout:   () => handleLogout(),
   });
   container.appendChild(topbar);
 
