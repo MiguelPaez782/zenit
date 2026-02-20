@@ -1,0 +1,68 @@
+# ============================================================
+# .gitignore
+# Archivos y carpetas excluidos del control de versiones
+# ============================================================
+
+
+# ------------------------------------------------------------
+# Sistema operativo
+# ------------------------------------------------------------
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+ehthumbs.db
+desktop.ini
+
+
+# ------------------------------------------------------------
+# Editores e IDEs
+# ------------------------------------------------------------
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+*.sublime-project
+*.sublime-workspace
+
+
+# ------------------------------------------------------------
+# Logs y temporales
+# ------------------------------------------------------------
+*.log
+*.tmp
+*.temp
+*.bak
+*.cache
+
+
+# ------------------------------------------------------------
+# IMPORTANTE: Variables de entorno y credenciales
+# Nunca subir archivos con claves o configuraciones sensibles
+# ------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+secrets.js
+config.local.js
+
+
+# ------------------------------------------------------------
+# Dependencias (si en algun momento se agregan herramientas de build)
+# ------------------------------------------------------------
+node_modules/
+package-lock.json
+yarn.lock
+
+
+# ------------------------------------------------------------
+# Archivos de build o distribucion
+# ------------------------------------------------------------
+dist/
+build/
+.cache/
