@@ -391,6 +391,7 @@ function renderApp(user, userData) {
 
   // Estado local para seguimiento de metas
   let allGoals = [];
+  let tutorialShown = false; // Bandera para mostrar el tutorial solo en el primer snapshot
 
   // Cargar y renderizar metas en tiempo real con Firestore listener
   let unsubscribe = null;
@@ -405,6 +406,14 @@ function renderApp(user, userData) {
         allGoals = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
         renderGoalsList(allGoals);
         hideLoading();
+
+        // Mostrar el tutorial la primera vez que el usuario entra al dashboard.
+        // La bandera tutorialShown evita que se dispare en actualizaciones
+        // posteriores del snapshot (cada vez que cambia una meta).
+        if (!tutorialShown) {
+          tutorialShown = true;
+          showTutorial();
+        }
       }, () => {
         showToast('Error al cargar metas', 'error');
         hideLoading();

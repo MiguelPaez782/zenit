@@ -82,6 +82,16 @@ body { margin: 0; overflow-x: hidden; }
   to   { opacity: 0; transform: translateX(-32px); }
 }
 
+@keyframes slideInFromRight {
+  from { opacity: 0; transform: translateX(40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInFromLeft {
+  from { opacity: 0; transform: translateX(-40px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
 /* Clase utilitaria para entrada de pantalla */
 .screen-enter {
   animation: fadeSlideIn 0.38s ease both;

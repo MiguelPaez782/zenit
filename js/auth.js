@@ -128,6 +128,11 @@ function renderLogin() {
   page.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') handleLogin();
   });
+
+  // Mostrar el modal de bienvenida la primera vez que el usuario visita la app
+  // Se llama con un pequeño retardo para que la animacion de entrada del login
+  // termine antes de que aparezca el modal
+  setTimeout(() => showWelcomeModal(), 500);
 }
 
 
